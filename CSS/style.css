@@ -15,6 +15,7 @@ body {
 }
 h1 {
     font-size: 3.8rem; 
+    
 }
 h2 {
     font-size: 2.8rem; 
@@ -126,6 +127,17 @@ button span{
 #Nombre-error, #email-error, #Area-error, #Descripción-error {
     grid-column: 2 / 3;
 }
-#sexo-error, #roles\[\]-error {
+#sexo-error, #roles-error {
     margin-left: 28rem;
+}
+.enlace{
+    text-decoration: none;
+    color: #fff;
+    background-color: #357AB4;
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 10%;
+}
+.container {
+    margin-top: 2rem;
 }

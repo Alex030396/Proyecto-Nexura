@@ -9,7 +9,7 @@ $(document).ready(function() {
             sexo: "required",
             Area: "required",
             descripcion: "required",
-            'roles[]': {
+            roles: {
                 required: true,
                 minlength: 1
             }
@@ -23,12 +23,12 @@ $(document).ready(function() {
             sexo: "Por favor seleccione su sexo",
             Area: "Por favor seleccione su área",
             descripcion: "Por favor ingrese una descripción",
-            'roles[]': "Por favor seleccione al menos un rol"
+            roles: "Por favor seleccione al menos un rol"
         },
         errorPlacement: function(error, element) {
             if (element.attr("name") == "sexo") {
                 error.insertAfter(element.closest('.input'));
-            } else if (element.attr("name") == "roles[]") {
+            } else if (element.attr("name") == "roles") {
                 error.insertAfter(element.closest('.input'));
             } else {
                 error.insertAfter(element);
