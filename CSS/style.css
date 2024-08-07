@@ -1,0 +1,131 @@
+html {
+    font-size: 62.5%;  
+    box-sizing: border-box; 
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+/* .contenedor {
+        max-width: 100rem;
+        margin: 0 10rem;  
+} */
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+}
+h1 {
+    font-size: 3.8rem; 
+}
+h2 {
+    font-size: 2.8rem; 
+}
+p {
+    font-size: 1.8rem;
+    margin-bottom: 0rem;
+    padding: 0rem 0 0 1rem;
+}
+
+/* Formulario */
+.formulario {
+    display: grid;
+    row-gap: 3rem;
+}
+.input {
+    display: grid;
+    grid-template-columns: 25% 75%
+}
+.label  {
+    text-align: end;
+    padding: 1rem 1rem 0 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.8rem;
+}
+.box {
+    padding: .7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.7rem;
+}
+.fem,.mas{
+    grid-column: 2 / 3;
+    display: flex;
+}
+.sex {
+    margin: 0;
+    padding-top: 2rem;
+}
+.textarea{
+    height: 7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.7rem;
+}
+.checkbox {
+    grid-column: 2 / 3;
+    display: flex;
+}
+/* .rol {
+    grid-row: 2 / 3;
+} */
+.boton {
+    grid-column: 2 / 3;
+    background-color: #357AB4;
+    color: white;
+    width: 10rem;
+    height: 3rem;
+    border-radius: .5rem;
+    border: none;
+}
+.advertencia {
+    background-color: #D8EEF6;
+    padding: 1rem 0;
+    margin: 3rem 0rem;
+
+    font-family: 'Times New Roman', Times, serif;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 3rem;
+}
+section {
+    margin-top: 5rem;
+}
+td {
+    text-align: left;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+}
+.sombra {
+    background-color: #eeeeee;
+}
+th{
+    text-align: left;
+    padding: 1rem 8px ;
+    border-bottom: 1px solid #000;
+}
+.icons{
+    width: 1.5rem;
+}
+.flex {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+.btn {
+    width: 7rem;
+    fill: #D8EEF6;
+    height: 3rem;
+}
+button span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+}
+.error {
+    color: red;
+}
+#Nombre-error, #email-error, #Area-error, #Descripción-error {
+    grid-column: 2 / 3;
+}
+#sexo-error, #roles\[\]-error {
+    margin-left: 28rem;
+}
