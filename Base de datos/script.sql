@@ -36,8 +36,8 @@ CREATE TABLE `nexura`.`empleado_rol` (
   CONSTRAINT `fg_key_empleado`
     FOREIGN KEY (`empleado_id`)
     REFERENCES `nexura`.`empleados` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fg_key_rol`
     FOREIGN KEY (`rol_id`)
     REFERENCES `nexura`.`roles` (`id`)

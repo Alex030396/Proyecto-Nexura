@@ -2,45 +2,8 @@
 require 'includes/database.php';
 $db = conectarBD();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // echo '<pre>';
-    // var_dump($_POST);
-    // echo '</pre>';
-    $empleado_id = $_POST['id'];
-    $nombre =$_POST['Nombre'];
-    $email =$_POST['email'];
-    $sexo =$_POST['sexo'];
-    $area =$_POST['Area'];
-    $texto = $_POST['descripcion'];
-    $boletin =isset($_POST['boletin']) ? 1 : 0;
-    $roles = $_POST['roles'];
-
-    $query = "INSERT INTO empleados (nombre,email,sexo,area_id,boletin,descripcion) VALUES ('$nombre','$email','$sexo',$area,$boletin,'$texto')";
-    echo $query;
-    
-    
-    $resultado = mysqli_query($db, $query);
-    if ($resultado) {
-        echo "Empleado registrado correctamente";
-    }
-    
-    if ($resultado) {
-        // Obtener el ID del último registro insertado
-        $empleado_id = mysqli_insert_id($db);
-        echo "Nuevo empleado registrado con éxito. ID del empleado: " . $empleado_id;
-    } else {
-        echo "Error: " . $query . "<br>" . $db->error;
-    }
-    $query1 = "INSERT INTO empleado_rol (empleado_id,rol_id) VALUES ($empleado_id,$roles)";
-    echo $query1;
-    
-    $resultado1 = mysqli_query($db, $query1);
-    if ($resultado1) {
-        echo "Empleado registrado correctamente";
-    }
-    
-
-}
+$query2 = "SELECT id, nombre, email, sexo, area_id, boletin FROM empleados";
+$result = $db->query($query2);
 
 ?>
 <!DOCTYPE html>
@@ -110,37 +73,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                        $query2 = "SELECT id,nombre,email,sexo,area_id,boletin FROM empleados";
-                        $result = $db->query($query2);
-                        while($row = $result->fetch_assoc()){
-                            echo "<tr>";
-                            echo "<td>".$row['nombre']."</td>";
-                            echo "<td>".$row['email']."</td>";
-                            // echo "<td>".$row['sexo']."</td>";
-                            echo "<td>";if ($row['sexo'] == 'F') { echo "Femenico"; } else {echo "Masculino";} echo"</td>";
-                            // echo "<td>".$row['area_id']."</td>";
-                            echo "<td>";if ($row['area_id'] == 1) { 
-                                echo "Ventas"; 
-                            } elseif ($row['area_id'] == 2) {
-                                echo "Calidad";
-                            } elseif ($row['area_id'] == 3) {
-                                echo "Producción";
-                            } elseif ($row['area_id'] == 4) {
-                                echo "Administración";
-                            }
-                            echo"</td>";
-
-
-
-                            echo "<td>";if ($row['boletin'] == 1) { echo "Si"; } else {echo "No";} echo"</td>";
-                            // echo "<td>".$row['boletin']."</td>";
-                            echo '<td> <a href="/propiedades/modificar.php?id='.$row['id'].'"> <i class="fa-solid fa-pen-to-square"></i> </a></td>';
-                            // echo '<td> <a href="/propiedades/modificar.php"> <i class="fa-solid fa-pen-to-square"></i> </a></td>';
-                            echo '<td> <a href="formulario.php"><i class="fa-solid fa-trash-can"></i> </a></td>';
-                            echo "</tr>";
-                        } 
-                    ?>
+                     <?php while ($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo $row['nombre']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['sexo'] === 'F' ? 'Femenino' : 'Masculino'; ?></td>
+                    <td>
+                        <?php 
+                        switch ($row['area_id']) {
+                            case 1: echo 'Ventas'; break;
+                            case 2: echo 'Calidad'; break;
+                            case 3: echo 'Producción'; break;
+                            case 4: echo 'Administración'; break;
+                        }
+                        ?>
+                    </td>
+                    <td><?php echo $row['boletin'] == 1 ? 'Sí' : 'No'; ?></td>
+                    <td>
+                        <a href="/propiedades/modificar.php?id=<?php echo $row['id']; ?>">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="eliminar.php?id=<?php echo $row['id']; ?>">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
                 </tbody>
             </table>
         </section>

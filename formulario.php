@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="input">
                     <label for="roles" class="label rol">Roles *</label>
-                        <div class="checkbox"><input id="rol1" name="roles" type="checkbox" value="1" > <p>Profesional de proyectos - Desarrollador</p></div>
+                        <div class="checkbox"><input id="rol1" name="roles" type="checkbox" value="1"> <p>Profesional de proyectos - Desarrollador</p></div>
                         <div class="checkbox"><input id="rol2" name="roles" type="checkbox" value="2"> <p>Gerente estratégico</p></div>
                         <div class="checkbox"><input id="rol3" name="roles" type="checkbox" value="3"> <p>Auxiliar administrativo</p></div>
                 </div>
